@@ -7,3 +7,4 @@ if __name__ == "__main__":
     else:
         train_ranking_model(df)
         print("Model retrained and saved.")
+
