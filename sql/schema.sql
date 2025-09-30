@@ -45,3 +45,4 @@ CREATE TABLE IF NOT EXISTS recommendation_logs (
   chosen INT DEFAULT 0,
   created_at TIMESTAMP DEFAULT NOW()
 );
+
