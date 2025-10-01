@@ -1,51 +1,13 @@
-#Appointment Recommender (AI/ML)
+# Appointment Recommender ML Module
 
-An AI-powered appointment reminder & recommender system that:
+This repository contains the AI/ML microservice for appointment reminders and slot recommendations.
 
-Sends weekly reminders to secondary users.
+# What it does
+- Primary user (doctor) can set a custom reminder interval per patient.
+- System sends reminders automatically based on last booking + interval.
+- Patients can book via:
+  - Book Appointment page → 1 manual option + 2 AI-suggested slots.
+  - Reminder notification → preferred single-slot page (last appointment time) + confirm.
+- The system logs candidates and chosen slots to build a training dataset. Weekly retrain or manual retrain available.
 
-Recommends 3 best time slots based on:
-
-Primary user’s availability.
-
-Secondary user’s booking history.
-
-Continuously learns from confirmations and retrains itself.
-
-##Features
-
-Hybrid rule-based + ML scoring.
-
-Automatic reminder notifications.
-
-Self-growing training dataset (recommendation_logs).
-
-Weekly auto retraining of model.
-
-REST API with Flask.
-
-PostgreSQL integration.
-
-🛠️ Tech Stack
-
-Python 3.10+
-
-Flask (API service)
-
-SQLAlchemy + PostgreSQL (database)
-
-scikit-learn (ML model)
-
-APScheduler (scheduled jobs)
-
-📂 Project Structure
-appointment-recommender-ml/
-│── README.md
-│── requirements.txt
-│── config.py
-│── recommender_service.py   # ML core
-│── api.py                   # Flask API + scheduler
-│── retrain.py               # standalone retraining
-│── models/                  
-│── sql/schema.sql          
-│── docs/    
+   
