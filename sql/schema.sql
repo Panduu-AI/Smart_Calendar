@@ -1,4 +1,4 @@
--- Reminder settings
+-- Reminder settings (unique per primary_user & secondary_user)
 CREATE TABLE IF NOT EXISTS reminder_settings (
   id SERIAL PRIMARY KEY,
   primary_user_id INT NOT NULL,
@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS reminder_settings (
   last_reminder_sent TIMESTAMP NULL,
   active BOOLEAN DEFAULT TRUE,
   created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
+  updated_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (primary_user_id, secondary_user_id)
 );
 
 -- Bookings
@@ -30,9 +31,10 @@ CREATE TABLE IF NOT EXISTS avail_slots (
 );
 
 -- Recommendation logs (for training)
+-- Using session_id as TEXT to avoid requiring UUID extension
 CREATE TABLE IF NOT EXISTS recommendation_logs (
   id SERIAL PRIMARY KEY,
-  session_id UUID NOT NULL,
+  session_id TEXT NOT NULL,
   primary_user_id INT NOT NULL,
   secondary_user_id INT NOT NULL,
   slot_id INT NOT NULL,
