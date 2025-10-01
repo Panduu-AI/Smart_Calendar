@@ -5,6 +5,5 @@ if __name__ == "__main__":
     if df.empty:
         print("No training data yet.")
     else:
-        train_ranking_model(df)
+        model = train_ranking_model(df)
         print("Model retrained and saved.")
-
